@@ -9,10 +9,14 @@ A search engine made from scratch, that allows users to select sites they want t
 4. [Hosting and deployment](#Hosting)
 
 ## Wireframes
-
-<img src="" width=600>
-<img src="" width=600>
-<img src="" width=600>
+### Sachi Homepage
+<img src="https://github.com/JazmynFuller/search-engine/blob/master/wireframes/cs355pages-02.png?raw=true" width=600>
+### Sachi Results
+<img src="https://github.com/JazmynFuller/search-engine/blob/master/wireframes/cs355pages-03.png?raw=true" width=600>
+### Sachi Admin Home
+<img src="https://github.com/JazmynFuller/search-engine/blob/master/wireframes/cs355pages-01.png?raw=true" width=600>
+### Sachi Admin Search History
+<img src="https://github.com/JazmynFuller/search-engine/blob/master/wireframes/cs355pages-04.png?raw=true" width=600>
 
 ## Back-end
 ### Crawler/Indexing Engine 
