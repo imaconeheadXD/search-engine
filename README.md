@@ -4,7 +4,7 @@ A search engine made from scratch, that allows users to select sites they want t
 
 ## Project Components
 1. [Back-end developmet](#Back-end) 
-2. [Database administration and optimization](#Databse)
+2. [Database administration and optimization](#Database)
 3. [Front-end development](#Front-end)
 4. [Hosting and deployment](#Hosting)
 
