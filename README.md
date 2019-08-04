@@ -3,10 +3,10 @@
 A search engine made from scratch, that allows users to select sites they want to search and download selected search results as a CSV, XML, or JSON file.
 
 ## Project Components
-1. Back-end developmet (#Back-end) 
-2. Database administration and optimization (#Databse)
-3. Front-end development (#Front-end)
-4. Hosting and deployment (#Hosting)
+1. [Back-end developmet](#Back-end) 
+2. [Database administration and optimization](#Databse)
+3. [Front-end development](#Front-end)
+4. [Hosting and deployment](#Hosting)
 
 ## Wireframes
 
