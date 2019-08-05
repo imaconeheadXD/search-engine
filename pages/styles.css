@@ -12,13 +12,27 @@ body {
 	background-repeat: no-repeat; 
 }
 
+.search-bg {
+	background-color: #fff;
+	background-image: url("../assets/sachi-title.png");
+	background-repeat: no-repeat;
+	background-position: 50% -100%;
+}
+
 .welcome-heading {
 	margin: 8% 0 0 5%;
 	font-size: 90px;
 }
 
-.search-admin-title {
-	/*padding-top: 30%;*/
+#search-box{
+	position: fixed;
+	top: 325px;
+}
+
+#search-box-width{
+	width: 650px !important;
+	border-radius: 55px;
+	border-width: 2px;
 }
 
 #admin-url-input {
@@ -36,4 +50,15 @@ body {
 	border-radius: 5px;
 	padding: 1% 5%;
 	margin-top: 3%;
+}
+
+.search-table {
+	margin-top: 5%;
+	margin-bottom: 5%;
+	padding: 0 15%;
+}
+
+#search-submit-btn{
+	position: fixed;
+	top: 395px;
 }
