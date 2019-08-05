@@ -1,0 +1,39 @@
+body {
+	width: 100%;
+}
+
+.navbar {
+	padding: 0;
+}
+
+.admin-bg {
+	background-image: url('https://images.pexels.com/photos/402028/pexels-photo-402028.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+	background-size: 100% 600px;
+	background-repeat: no-repeat; 
+}
+
+.welcome-heading {
+	margin: 8% 0 0 5%;
+	font-size: 90px;
+}
+
+.search-admin-title {
+	/*padding-top: 30%;*/
+}
+
+#admin-url-input {
+	padding: 2% 0;
+}
+
+#site-area-container {
+	padding: 5% 0;
+}
+
+#search-history-count {
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	background-color: #303640;
+	border-radius: 5px;
+	padding: 1% 5%;
+	margin-top: 3%;
+}
