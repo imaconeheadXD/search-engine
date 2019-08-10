@@ -10,7 +10,7 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark navbar-static-top">
         <div class="container-fluid" style="background-color: #130303;">
-        <a class="navbar-brand" href="search.php">Sachi</a>
+        <a class="navbar-brand" href="search.html">Sachi</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
           aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -43,7 +43,7 @@
 		<div class="row justify-content-center" style="margin-left: 25%; margin-right: 25%; margin-top: 1%; text-align: center; top: 420px !important; position: relative;">
 			      <input type="text" name="webpage_url" placeholder="Insert Link Here:" style="text-align: center; border-color: #efefef">
 		</div>
-		<div class="row justify-content-center" style="padding-bottom: 5%;">
+		<div class="row justify-content-center" style="padding-bottom: 2%;">
 			<input style="top: 430px !important; position: relative; margin-bottom: 15%;" type="submit" name="submit" value="Add Site to Crawl">
 		</div>
 	</form>
@@ -69,34 +69,33 @@
 	// echo "Connected successfully";
 	// echo "<br>";
 
-
+    
 	date_default_timezone_set("America/New_York");
-
-	$webpage_url = $_POST['webpage_url'];
-	/****
-	*
-	* function to extract site title from metadata
-	*/
-	function get_title($url){
-	  $str = file_get_contents($url);
-	  if(strlen($str)>0){
-	    $str = trim(preg_replace('/\s+/', ' ', $str)); // supports line breaks inside <title>
-	    preg_match("/\<title\>(.*)\<\/title\>/i",$str,$title); // ignore case
-	    return $title[1];
-	  }
-	}
-
-
-	$tags = get_meta_tags($webpage_url); // gets all meta tags in webpage
-	$desc = $tags['description']; // url description
-	$web_title = get_title($webpage_url);
-	$lastModified = date("Y/m/d"); // current data
-	$lastIndexed = date("Y/m/d"); // needs to be changed,date last indexed
-	$timeToIndex = .01; // needs to be changed, but time took to index
 	
 
 	// add url inserted by user into the database
 	if(isset($_POST['submit'])) {
+		$webpage_url = $_POST['webpage_url'];
+		/****
+		*
+		* function to extract site title from metadata
+		*/
+		function get_title($url){
+		  $str = file_get_contents($url);
+		  if(strlen($str)>0){
+		    $str = trim(preg_replace('/\s+/', ' ', $str)); // supports line breaks inside <title>
+		    preg_match("/\<title\>(.*)\<\/title\>/i",$str,$title); // ignore case
+		    return $title[1];
+		  }
+		}
+
+
+		$tags = get_meta_tags($webpage_url); // gets all meta tags in webpage
+		$desc = $tags['description']; // url description
+		$web_title = get_title($webpage_url);
+		$lastModified = date("Y/m/d"); // current data
+		$lastIndexed = date("Y/m/d"); // needs to be changed,date last indexed
+		$timeToIndex = .01; // needs to be changed, but time took to index
 		// echo $webpage_title;
 
 		if($webpage_url==''){
@@ -126,7 +125,7 @@
 
 	$sites = mysqli_query($conn,"SELECT url FROM page");
 	
-	echo "<table class=\"table table-striped table-responsive-md crawl-table\" style=\"margin-bottom: 5%;  margin-top: 20%;  text-align: center; !important; width: 400px;\" border=\"0\"; align=\"center\">";
+	echo "<table class=\"table table-striped table-responsive-md crawl-table\" style=\"margin-top: 20%;  text-align: center; !important; width: 400px;\" border=\"0\"; align=\"center\">";
 	echo "<thead>";
 	echo "<tr>";
 	echo "<th scope=\"col\">Added Websites</th>";
