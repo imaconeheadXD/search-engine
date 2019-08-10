@@ -60,18 +60,31 @@
 
       <div class="row justify-content-center" id="admin-url-input">
       	<div class="col-12-md">
-      		<input id="newItem" size="40" type="" name="" placeholder="www.example.com" style="text-align: center;">
+          <form action="crawl.php" method="GET">
+            <input id="newItem" size="40" type="" value="searchedSite" name="search"  placeholder="https://www.example.com" style="text-align: center;"/>
+
+            <!-- <input type = 'submit' name = 'submit' value = 'Search source code' > -->
+            <!-- <input type="hidden" id='data' name ="data" value="" /> -->
+             <div class="row justify-content-center" id="admin-button-group">
+              <div class="col-12-md">
+                <button  name= 'submit' value='Add' class="btn btn-dark" onclick="addItem(this)">Add</button>
+                <button type="button" class="btn btn-dark" onclick="removeItems(this)">Delete</button>
+                <button type="button" class="btn btn-dark" onclick="selectAll(this)">Select All</button>
+                <button type="button" class="btn btn-dark" onclick="deselectAll(this)">Deselect All</button>
+              </div>
+            </div>
+          </form>
       	</div>
       </div>
 
-      <div class="row justify-content-center" id="admin-button-group">
+     <!--  <div class="row justify-content-center" id="admin-button-group">
       	<div class="col-12-md">
-      		<button type="button" class="btn btn-dark" onclick="addItem()">Add</button>
-      		<button type="button" class="btn btn-dark" onclick="removeItems()">Delete</button>
-      		<button type="button" class="btn btn-dark" onclick="selectAll()">Select All</button>
-      		<button type="button" class="btn btn-dark" onclick="deselectAll()">Deselect All</button>
+      		<button type="button" class="btn btn-dark" onclick="addItem(this)">Add</button>
+      		<button type="button" class="btn btn-dark" onclick="removeItems(this)">Delete</button>
+      		<button type="button" class="btn btn-dark" onclick="selectAll(this)">Select All</button>
+      		<button type="button" class="btn btn-dark" onclick="deselectAll(this)">Deselect All</button>
       	</div>
-      </div>
+      </div> -->
       <div class="row justify-content-center" id="site-area-container">
       	<div id="site-area"></div>
       </div>

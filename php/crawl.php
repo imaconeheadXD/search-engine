@@ -1,6 +1,12 @@
 <?php
 include("db.php");
+include("admin.html")
 include("Parser.php");
+
+
+    $searchTest = $_POST['data'];
+    // echo '<script>console.log("Worked");</script>';
+    echo $searchTest;
 
 $crawled = array();
 $crawling = array();
