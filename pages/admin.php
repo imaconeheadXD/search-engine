@@ -10,7 +10,7 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark navbar-static-top">
         <div class="container-fluid" style="background-color: #130303;">
-        <a class="navbar-brand" href="search.html">Sachi</a>
+        <a class="navbar-brand" href="search.php">Sachi</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
           aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -37,27 +37,15 @@
       </div>
 
 	<form action="admin.php" method="post" enctype="multipart/form-date">
-		<div class="row justify-content-center">
-		<table class="table table-striped crawl-table" style="margin-left: 25%; margin-right: 25%; margin-top: 1%; text-align: center; top: 450px !important; position: relative;" border="0" cellspacing="2" align="center">
-			<thead>
-			    <tr>
-			      <th scope="col">Added Website</th>
-			    </tr>
-			</thead>
-
-			<tbody>
-			<tr>
-				<td><input type="text" name="webpage_url" placeholder="Insert Link Here:"></td>
-			</tr>
-
-			</tbody>
-
-		</table>
-			<input style="top: 460px !important; position: relative; margin-bottom: 5%;" type="submit" name="submit" value="Add Site to Crawl">
+		<div class="row justify-content-center" style="margin-left: 25%; margin-right: 25%; margin-top: 1%; text-align: center; top: 430px !important; position: relative;">
+			      <h2>Insert Website to Crawl</h2>
 		</div>
-
-
-		
+		<div class="row justify-content-center" style="margin-left: 25%; margin-right: 25%; margin-top: 1%; text-align: center; top: 420px !important; position: relative;">
+			      <input type="text" name="webpage_url" placeholder="Insert Link Here:" style="text-align: center; border-color: #efefef">
+		</div>
+		<div class="row justify-content-center" style="padding-bottom: 5%;">
+			<input style="top: 430px !important; position: relative; margin-bottom: 15%;" type="submit" name="submit" value="Add Site to Crawl">
+		</div>
 	</form>
 <script type="text/javascript" src="index.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -68,34 +56,23 @@
 
 <?php
 
-	$servername = "149.4.211.180";
-	$username = "fuja3933";
-	$password = "23303933";
+	// $servername = "149.4.211.180";
+	// $username = "fuja3933";
+	// $password = "23303933";
 
-	// if(isset($_POST['submit'])) {
-	// 	echo $webpage_title = $_POST['webpage_title'];
-	// }
+	$conn = new mysqli("localhost","root","","search");
 
-	$conn = new mysqli($servername, $username, $password);
-	// Check connection
+	//Check connection
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);
 	} 
-	echo "Connected successfully";
-	echo "<br>";
+	// echo "Connected successfully";
+	// echo "<br>";
 
 
 	date_default_timezone_set("America/New_York");
-	// $doc = new DOMDocument;
-	// $doc->loadHTMLFile('http://urlhere.com');
-	// $title = $doc->getElementsByTagName('title');
-	// $title = $title[0];
-	// $xpath = new DOMXPath($doc);
-	// $description = $xpath->query('/html/head/meta[name@="description"]/@content');
-	// $keywords = $xpath->query('/html/head/meta[name@="keywords"]/@content');
 
 	$webpage_url = $_POST['webpage_url'];
-
 	/****
 	*
 	* function to extract site title from metadata
@@ -109,24 +86,16 @@
 	  }
 	}
 
-	// $web_title = get_title($webpage_url);
 
-	// echo $webpage_url; // site url
-	// echo "<br>";
-	// echo $web_title; //site title
-	// echo "<br>";
 	$tags = get_meta_tags($webpage_url); // gets all meta tags in webpage
 	$desc = $tags['description']; // url description
-	$web_title = $tags['title'];
-	$lastModified = date("m/d/Y"); // current data
-	$lastIndexed = date("m/d/Y"); // needs to be changed,date last indexed
-	$timeToIndex = date("h:i:sa"); // needs to be changed, but time took to index
-	// echo "<br>";
-	// print_r($desc);
-	// echo "<br>";
-	// print_r($lastModified);
+	$web_title = get_title($webpage_url);
+	$lastModified = date("Y/m/d"); // current data
+	$lastIndexed = date("Y/m/d"); // needs to be changed,date last indexed
+	$timeToIndex = .01; // needs to be changed, but time took to index
 	
-	
+
+	// add url inserted by user into the database
 	if(isset($_POST['submit'])) {
 		// echo $webpage_title;
 
@@ -135,18 +104,47 @@
 		
 			exit();
 		} else {
+
+			if($web_title=='') $web_title = 'none';
+			if($desc=='') $desc = 'none';
 		
-			$insert_query = "INSERT INTO page (`url`,`title`, `description`,`lastModified`,`lastIndexed`, `timeToIndex`) VALUES ('$webpage_url','$webpage_title','$desc','$lastModified','$lastIndexed','$timeToIndex')";
+			$sql = "INSERT INTO page (url,title,description,lastModified,lastIndexed,timeToIndex) VALUES ('$webpage_url','$web_title','$desc','$lastModified','$lastIndexed','$timeToIndex')";
 
-			echo $insert_query;
+			// echo $sql;
 
-			if(isset($insert_query)){
+			if($conn->query($sql) === TRUE){
 				echo "<script>alert('Data inserted into table')</script>";
+			} else {
+				// echo "<script>alert('Data NOT inserted into table')</script>";
+			    //echo "Error: " . $sql . "<br>" . $conn->error;
 			}
+
 		}
 	}
 
+	// get all websites in page table and display on screen
 
+	$sites = mysqli_query($conn,"SELECT url FROM page");
+	
+	echo "<table class=\"table table-striped table-responsive-md crawl-table\" style=\"margin-bottom: 5%;  margin-top: 20%;  text-align: center; !important; width: 400px;\" border=\"0\"; align=\"center\">";
+	echo "<thead>";
+	echo "<tr>";
+	echo "<th scope=\"col\">Added Websites</th>";
+	echo "</tr>";
+	echo "</thead>";
+	echo "<tbody>";
+
+	while($row = mysqli_fetch_array($sites)) {
+		echo "
+			<tr>
+			<td>" . $row[0] . "</td>
+			</tr>
+		";
+	}
+	echo "</tbody>";
+	echo "</table>";
+
+	$conn->close();
 
 	
 
