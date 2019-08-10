@@ -5,7 +5,7 @@ function addItem() {
   var br = document.createElement("br");
   var checkbox = document.createElement('input');
   checkbox.type = "checkbox";
-  checkbox.name = "name";
+  checkbox.name = "checkThis";
   checkbox.value = "value";
   var hr = document.createElement("hr");
 
@@ -17,7 +17,8 @@ function addItem() {
   //  i.appendChild(p);
   //  i.appendChild(br);
   anchor.setAttribute('href',candidate.value);
-  anchor.innerHTML = candidate.value;
+  anchor.setAttribute('target', '_blank');
+  anchor.innerHTML = " "+candidate.value;
   i.appendChild(checkbox);
   i.appendChild(anchor);
   i.appendChild(hr);
@@ -25,6 +26,7 @@ function addItem() {
 
 
   document.getElementById("site-area").style.textAlign="center";
+  document.getElementById('data').value=candidate.value;
 
 }
 

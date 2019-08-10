@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Creepster|Roboto:300&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="styles.css">
+<!DOCTYPE html> 
+<html> 
+	<head>
+		 <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Creepster|Roboto:300&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="styles.css">
 	<title>Sachi Search Home</title>
-</head>
-<body class="search-bg">
+	</head> 
+	
+<body class="search-bg"> 
+
 	<nav class="navbar navbar-expand-lg navbar-dark navbar-static-top">
         <div class="container-fluid" style="background-color: #130303;">
         <a class="navbar-brand" href="search.html">Sachi</a>
@@ -19,7 +22,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Admin</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-		<a class="dropdown-item" target="" href="admin.html">Admin Home</a>
+		<a class="dropdown-item" target="" href="admin.php">Admin Home</a>
 		<a class="dropdown-item" target="" href="history.html">Search History</a>
 	    </li>
 		<li class="nav-item">
@@ -30,15 +33,18 @@
       </div>
       </nav>
 
-      <div class="row justify-content-center">
-          <div class="active-cyan-4 mb-4" id="search-box">
-            <input id="search-box-width" class="form-control" type="text" placeholder="Search" aria-label="Search">
-          </div>
-      </div>
-
-      <div class="row justify-content-center">
-        <button id="search-submit-btn" type="button" class="btn btn-secondary">Sachi Search</button>
-      </div>
+		<form action="search_results.php" method="post"> 
+			<div class="row justify-content-center">
+			<div class="active-cyan-4 mb-4" id="search-box">
+				<input class="form-control" type="text" name="user_query" id="search-box-width" placeholder="Search"/> 
+				<!-- <input type="submit" name="search" value="Search Now"> -->
+				<div class="row justify-content-center">
+					<!-- <input type="submit" name="search" value="Search Now"> -->
+			        <button id="search-submit-btn" type="submit" name="search" class="btn btn-secondary">Sachi Search</button>
+			      </div>
+			</div>
+			</div>
+		</form>
 
 <script type="text/javascript" src="index.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
