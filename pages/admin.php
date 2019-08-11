@@ -114,6 +114,7 @@
 			if($conn->query($sql) === TRUE){
 				echo "<script>alert('Data inserted into table')</script>";
 			} else {
+				echo "<script>alert('Data not inserted into table')</script>";
 				// echo "<script>alert('Data NOT inserted into table')</script>";
 			    //echo "Error: " . $sql . "<br>" . $conn->error;
 			}
@@ -128,7 +129,7 @@
 	echo "<table class=\"table table-striped table-responsive-md crawl-table\" style=\"margin-top: 20%;  text-align: center; !important; width: 400px;\" border=\"0\"; align=\"center\">";
 	echo "<thead>";
 	echo "<tr>";
-	echo "<th scope=\"col\">Added Websites</th>";
+	echo "<th scope=\"col\">Sites to Search</th>";
 	echo "</tr>";
 	echo "</thead>";
 	echo "<tbody>";

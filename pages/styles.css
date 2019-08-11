@@ -62,6 +62,10 @@ body {
 	padding: 0 15%;
 }
 
+#results {
+	margin: 10%;
+}
+
 #search-submit-btn{
 	position: fixed;
 	top: 395px;
